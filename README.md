@@ -61,3 +61,25 @@ class Main {
       System.out.print(Arrays.toString(arr));
     }
 }
+
+3.cheking sorted and not Aseceding and descending 
+class Main {
+    public static void main(String[] args) {
+       int[] arr = {1,1,2,3,4,5,6,7,8};
+       Boolean value=true;
+       for(int i=0;i<arr.length-1;i++)
+       {
+           if(arr[i]>arr[i+1])   // if(arr[i]<arr[i+1])
+           {
+              value=false;            
+           }
+       }
+       if(value)
+           System.out.println("give arrays is acesding "+value);
+       else
+          System.out.println("not sorted"+value);
+    //  System.out.print(Arrays.toString(arr));
+    }
+
+
+    
