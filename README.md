@@ -135,4 +135,47 @@ class Main {
     }
 }
 
+4. first -ve negative number of every sliding window
+   // Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        int[] arr = {12,-1,-7,8,-15,30,16,28};
+        int i=0;
+        int j=0;
+        int k=3;
+        List<Integer> list = new ArrayList<>();
+        while(j<arr.length)
+        {
+            if(j-i+1<k)
+            {
+                j++;
+            }
+            else if(j-i+1==k)
+            {
+                boolean found=false;
+                for(int x=i;x<j;x++)
+                { 
+                    if(arr[x]<0)
+                    {
+                        list.add(arr[x]);
+                        found=true;
+                         break; // only first negative needed
+                    }
+                    
+                }
+                if (!found) {
+                    list.add(0);                 // no negative found
+                }
+               i++; 
+               j++;
+            }
+           
+        }
+        System.out.println("List of  first negetive number "+list);
+        
+        
+    }
+}
     
