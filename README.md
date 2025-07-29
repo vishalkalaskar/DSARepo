@@ -81,5 +81,24 @@ class Main {
     //  System.out.print(Arrays.toString(arr));
     }
 
+**sliding window approach**
 
+class Main {
+    public static void main(String[] args) {
+        int[] arr = {0,1,2,3,4,5};
+        int sum=0;
+        for(int i=0;i<arr.length-3;i++)
+        {
+            for(int k=i;k<i+3;k++)
+            {
+                 System.out.println(arr[k]+" ");
+                 sum+=arr[k];
+            }
+            System.out.println(); // new line after each group
+            System.out.println("sum is "+sum);
+            
+          
+        }
+    }
+}
     
