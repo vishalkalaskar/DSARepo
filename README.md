@@ -145,6 +145,7 @@ class Main {
         int i=0;
         int j=0;
         int k=3;
+   //LinkedHashSet<Integer> set = new LinkedHashSet<>(); to achive this LinkedHashSet<Integer> set = new LinkedHashSet<>();
         List<Integer> list = new ArrayList<>();
         while(j<arr.length)
         {
