@@ -101,4 +101,38 @@ class Main {
         }
     }
 }
+
+ALETERNATIVE 
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        int[] arr = {0,1,2,3,4,5};
+        int sum=0;
+        int i=0;
+        int j=0;
+        int k=3;
+         int maxsum = Integer.MIN_VALUE;  // Fix here
+        while(j<arr.length)
+        {
+            sum+=arr[j];
+            if(j-i+1<k)
+            {
+                j++;
+            }
+            else if(j-i+1==k)
+            {
+                maxsum= Math.max(maxsum,sum);
+                sum-=arr[i];
+                i++;
+                j++;
+            }
+        }
+        System.out.println("maxsum "+maxsum);
+        
+        
+    }
+}
+
     
