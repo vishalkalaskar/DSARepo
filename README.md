@@ -179,4 +179,89 @@ class Main {
         
     }
 }
+
+5.count occurancess of anagram.
+class Main {
+    public static void main(String[] args) {
+        String s = "xxorfxaofr";
+        int i = 0, j = 0;
+        int k = 3;  // window size
+
+        while (j < s.length()) {
+            if (j - i + 1 < k) {
+                j++;
+            } else if (j - i + 1 == k) {
+                boolean hasF = false, hasO = false, hasR = false;
+
+                // check current window [i, j]
+                for (int x = i; x <= j; x++) {
+                    if (s.charAt(x) == 'f') hasF = true;
+                    if (s.charAt(x) == 'o') hasO = true;
+                    if (s.charAt(x) == 'r') hasR = true;
+                }
+
+                if (hasF && hasO && hasR) {
+                    System.out.println("Window contains f,o,r: " + s.substring(i, j + 1));
+                }
+
+                // slide window
+                i++;
+                j++;
+            }
+        }
+    }
+}
+//alernative code
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        String s = "xxorfxaofr";
+        String pattern = "for";
+        int k = pattern.length();
+        
+        // Frequency map for pattern
+        Map<Character, Integer> freqMap = new HashMap<>();
+        for (char c : pattern.toCharArray()) {
+            freqMap.put(c, freqMap.getOrDefault(c, 0) + 1);
+        }
+
+        // Sliding window frequency map
+        Map<Character, Integer> windowMap = new HashMap<>();
+        int i = 0, j = 0, count = 0;
+
+        while (j < s.length()) {
+            // Add current character to window map
+            char curr = s.charAt(j);
+            windowMap.put(curr, windowMap.getOrDefault(curr, 0) + 1);
+
+            // If window size < k, just expand
+            if (j - i + 1 < k) {
+                j++;
+            } 
+            // When window size == k
+            else if (j - i + 1 == k) {
+                // Check if maps match (anagram found)
+                if (windowMap.equals(freqMap)) {
+                    count++;
+                    System.out.println("Anagram found: " + s.substring(i, j + 1));
+                }
+
+                // Remove leftmost char from window
+                char left = s.charAt(i);
+                windowMap.put(left, windowMap.get(left) - 1);
+                if (windowMap.get(left) == 0) {
+                    windowMap.remove(left);
+                }
+
+                // Slide the window
+                i++;
+                j++;
+            }
+        }
+
+        System.out.println("Total anagram occurrences: " + count);
+    }
+}
+
     
