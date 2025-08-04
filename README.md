@@ -264,4 +264,75 @@ class Main {
     }
 }
 
+6.Given an array arr[] of size N and an integer K. Find the maximum for each and every contiguous subarray of size K
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        int[] arr = {1, 3, -1, -3, 5, 3, 6, 7};
+        int k = 3;
+        int i = 0, j = 0;
+
+        List<Integer> list = new ArrayList<>();
+
+        while (j < arr.length) {
+            if (j - i + 1 < k) {
+                j++;
+            } else if (j - i + 1 == k) {
+                int max = Integer.MIN_VALUE;  //it hold max value.
+
+                // Find max in current window
+                for (int x = i; x <= j; x++) {
+                    if (arr[x] > max) {
+                        max = arr[x];
+                    }
+                }
+                list.add(max);
+
+                // Slide window
+                i++;
+                j++;
+            }
+        }
+
+        System.out.println("Maximums: " + list);
+    }
+}
+7.Given an array containing N positive integers and an integer K. Your task is to find the length of the longest Sub-Array with sum of the elements equal to the given 
+import java.util.*;
+
+class Main {
+    public static void main(String[] args) {
+        int[] arr = {4, 1, 1, 1, 2, 3, 5};
+        int k = 5;
+        int i = 0, j = 0, sum = 0;
+        int maxLen = 0;
+
+        while (j < arr.length) {
+            sum += arr[j];
+
+            if (sum < k) {
+                j++;
+            } 
+            else if (sum == k) {
+                maxLen = Math.max(maxLen, j - i + 1);
+                j++;
+            } 
+            else if (sum > k) {
+                while (sum > k) {
+                    sum -= arr[i];
+                    i++;
+                }
+                // After reducing, check again
+                if (sum == k) {
+                    maxLen = Math.max(maxLen, j - i + 1);
+                }
+                j++;
+            }
+        }
+
+        System.out.println("Length of longest subarray with sum " + k + " is: " + maxLen);
+    }
+}
+
     
