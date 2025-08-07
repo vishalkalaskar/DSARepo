@@ -1,0 +1,3 @@
+cd ~/path/to/DSARepo/StudyDSA/src
+javac array/Array1.java
+java array.Array1
